@@ -1,0 +1,13 @@
+mat-card {
+  margin-bottom: 30px;
+  .mat-card-image {
+    border-top: 1px solid $color-border-light;
+    border-bottom: 1px solid $color-border-light;
+  }
+  &:hover {
+    cursor: pointer;
+    box-shadow: 3px 3px 10px $color-border !important;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.03);
+  }
+}
