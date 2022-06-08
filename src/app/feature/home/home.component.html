@@ -1,4 +1,35 @@
 <div class="container">
-  <div class="title main mb-5">Inventory App</div>
+  <div class="title main mb-5">IT Inventory App</div>
+  <div class="mb-3" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+    <div>
+      <button mat-button color="primary" [matMenuTriggerFor]="menu">
+        Employees
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="employee/list">List</button>
+        <button mat-menu-item routerLink="employee/modify">Add</button>
+      </mat-menu>
+    </div>
+    <div class="font-l">|</div>
+    <div>
+      <button mat-button color="primary" [matMenuTriggerFor]="menu">
+        Devices
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="employee/list">List</button>
+        <button mat-menu-item routerLink="employee/modify">Add</button>
+      </mat-menu>
+    </div>
+    <div class="font-l">|</div>
+    <div>
+      <button mat-button color="primary" [matMenuTriggerFor]="menu">
+        Link Devices
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="employee/list">List</button>
+        <button mat-menu-item routerLink="employee/modify">Add</button>
+      </mat-menu>
+    </div>
+  </div>
   <router-outlet></router-outlet>
 </div>

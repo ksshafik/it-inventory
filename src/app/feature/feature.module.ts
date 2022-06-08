@@ -10,6 +10,7 @@ import { DeviceModifyComponent } from './device/device-modify/device-modify.comp
 import { DeviceListComponent } from './device/device-list/device-list.component';
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,13 @@ import { FormsModule } from '@angular/forms';
     DeviceModifyComponent,
     DeviceListComponent,
   ],
-  imports: [FeatureRoutingModule, CommonModule, AppMaterialModule, FormsModule],
+  imports: [
+    FeatureRoutingModule,
+    CommonModule,
+    AppMaterialModule,
+    FormsModule,
+    FlexLayoutModule,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FeatureModule {}

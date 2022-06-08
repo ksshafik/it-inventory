@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from 'src/app/app-state/app-state';
 import { Employee } from 'src/app/shared/interfaces/employee';
 
 @Component({
@@ -8,19 +11,29 @@ import { Employee } from 'src/app/shared/interfaces/employee';
   styleUrls: ['./employee-list.component.scss'],
 })
 export class EmployeeListComponent implements OnInit {
-  employees: Array<Employee>;
-  displayedColumns = ['name', 'email'];
-  dataSource: MatTableDataSource<Employee>;
+  private employees$: Observable<Array<Employee>>;
+  public displayedColumns = ['name', 'email', 'actions'];
+  public dataSource: MatTableDataSource<Employee>;
 
-  constructor() {
-    this.employees = [
-      { name: 'shafik', email: 'ksshafik@gmail.com' },
-      { name: 'thazniya', email: 'thazniyamm@gmail.com' },
-    ];
-    this.dataSource = new MatTableDataSource<Employee>(this.employees);
+  constructor(private store: Store<AppState>) {
+    this.employees$ = new Observable();
+    this.dataSource = new MatTableDataSource();
   }
 
   ngOnInit(): void {
-   
+    this.initData();
+  }
+
+  /**
+   * @name initData
+   * @description Initialize data
+   */
+  initData() {
+    let employees: Array<Employee>;
+    this.employees$ = this.store.select('employee');
+    this.employees$.subscribe((emp: Array<Employee>) => {
+      employees = emp;
+      this.dataSource = new MatTableDataSource<Employee>(employees);
+    });
   }
 }
