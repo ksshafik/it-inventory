@@ -18,10 +18,7 @@ const initialState: Inventory = {
   },
 };
 
-export function inventoryReducer(
-  state: Inventory[] = [],
-  action: Action
-) {
+export function inventoryReducer(state: Inventory[] = [], action: Action) {
   const inventoryAction = action as InventoryActions.Actions;
 
   switch (inventoryAction.type) {

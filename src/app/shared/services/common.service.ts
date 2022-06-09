@@ -12,6 +12,6 @@ export class CommonService {
    * @description Open snackbar
    */
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {duration: 5000});
+    this._snackBar.open(message, action, {duration: 9000});
   }
 }

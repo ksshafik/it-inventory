@@ -55,6 +55,7 @@ export class InventoryModifyComponent implements OnInit {
     this.initData();
     this.getEmployees();
     this.getDevices();
+    this.getInventories();
   }
 
   /**
@@ -106,17 +107,54 @@ export class InventoryModifyComponent implements OnInit {
   }
 
   /**
+   * @name getInventories
+   * @description Get all inventories
+   */
+  getInventories() {
+    let inventories$: Observable<Array<Inventory>>;
+    inventories$ = this.store.select('inventory');
+    inventories$.subscribe((inv: Array<Inventory>) => {
+      this.inventories = inv;
+    });
+  }
+
+  /**
    * @name onSubmit
    * @description On submit form
    */
   onSubmit(inventory: Inventory) {
     if (this.isEdit) {
       this.store.dispatch(new InventoryActions.UpdateInventory(inventory));
+      this.router.navigate(['/inventory/list']);
     } else {
-      this.store.dispatch(new InventoryActions.AddInventory(inventory));
+      let isExist = this.inventories.find(
+        (o) => o.employee.id === inventory.employee.id
+      );
+      if (!isExist) {
+        this.store.dispatch(new InventoryActions.AddInventory(inventory));
+        this.router.navigate(['/inventory/list']);
+      } else {
+        this.commonService.openSnackBar(
+          'A Device is already linked to this Employee. You can change the device through Edit option',
+          'Close'
+        );
+      }
     }
+  }
 
-    this.router.navigate(['/inventory/list']);
-    this.commonService.openSnackBar('success', 'Close');
+  /**
+   * @name compareEmployees
+   * @description CompareWith function for Employees
+   */
+  compareEmployees(c1: Employee, c2: Employee): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
+
+  /**
+   * @name compareDevices
+   * @description CompareWith function for Devices
+   */
+  compareDevices(c1: Employee, c2: Employee): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 }

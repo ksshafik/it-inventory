@@ -10,12 +10,15 @@
     </button>
   </div>
 
-  <div class="title small">{{ isEdit ? "Edit" : "Add New" }} Inventory - Link Device to Empoyee</div>
+  <div class="title small">
+    {{ isEdit ? "Edit" : "Add New" }} Inventory - Link Device to Empoyee
+  </div>
 </div>
 <form
   name="form"
   (ngSubmit)="!inventoryForm.invalid && onSubmit(inventory)"
   #inventoryForm="ngForm"
+  *ngIf="inventory; else noRecord"
 >
   <div
     fxLayout="column"
@@ -29,6 +32,7 @@
         [(ngModel)]="inventory.employee"
         name="employee"
         #employee="ngModel"
+        [compareWith]="compareEmployees"
       >
         <mat-option *ngFor="let employee of employees" [value]="employee">
           {{ employee.id }} - {{ employee.name }}
@@ -41,6 +45,7 @@
         [(ngModel)]="inventory.device"
         name="device"
         #device="ngModel"
+        [compareWith]="compareDevices"
       >
         <mat-option *ngFor="let device of devices" [value]="device">
           {{ device.id }} - {{ device.type }}
@@ -67,3 +72,6 @@
     </div>
   </div>
 </form>
+<ng-template #noRecord>
+  <div class="blank-message">No Record found</div>
+</ng-template>
