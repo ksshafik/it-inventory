@@ -36,4 +36,13 @@ export class EmployeeListComponent implements OnInit {
       this.dataSource = new MatTableDataSource<Employee>(employees);
     });
   }
+
+  /**
+   * @name applyFilter
+   * @description Apply filter to table
+   */
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

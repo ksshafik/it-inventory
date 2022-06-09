@@ -1,0 +1,69 @@
+<div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+  <div class="mb-2">
+    <button
+      mat-icon-button
+      aria-label="Back button"
+      routerLink="/inventory/list"
+      aria-label="Back"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+
+  <div class="title small">{{ isEdit ? "Edit" : "Add New" }} Inventory - Link Device to Empoyee</div>
+</div>
+<form
+  name="form"
+  (ngSubmit)="!inventoryForm.invalid && onSubmit(inventory)"
+  #inventoryForm="ngForm"
+>
+  <div
+    fxLayout="column"
+    fxLayoutGap="20px"
+    fxLayoutAlign="start stretch"
+    fxFlex="50"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Employee Name</mat-label>
+      <mat-select
+        [(ngModel)]="inventory.employee"
+        name="employee"
+        #employee="ngModel"
+      >
+        <mat-option *ngFor="let employee of employees" [value]="employee">
+          {{ employee.id }} - {{ employee.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Device Type</mat-label>
+      <mat-select
+        [(ngModel)]="inventory.device"
+        name="device"
+        #device="ngModel"
+      >
+        <mat-option *ngFor="let device of devices" [value]="device">
+          {{ device.id }} - {{ device.type }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter the description</mat-label>
+      <input
+        matInput
+        name="description"
+        [(ngModel)]="inventory.description"
+        #description="ngModel"
+        required="true"
+      />
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary" type="submit" class="mr-3">
+        Save
+      </button>
+      <button mat-raised-button type="button" routerLink="/inventory/list">
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,33 +1,38 @@
 <div class="container">
   <div class="title main mb-5">IT Inventory App</div>
-  <div class="mb-3" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+  <div
+    class="mb-3"
+    fxLayout="row"
+    fxLayoutGap="10px"
+    fxLayoutAlign="start center"
+  >
     <div>
-      <button mat-button color="primary" [matMenuTriggerFor]="menu">
+      <button mat-button color="primary" [matMenuTriggerFor]="menuEmployee">
         Employees
       </button>
-      <mat-menu #menu="matMenu">
+      <mat-menu #menuEmployee="matMenu">
         <button mat-menu-item routerLink="employee/list">List</button>
         <button mat-menu-item routerLink="employee/modify">Add</button>
       </mat-menu>
     </div>
-    <div class="font-l">|</div>
+    <div class="font-l color-border">|</div>
     <div>
-      <button mat-button color="primary" [matMenuTriggerFor]="menu">
+      <button mat-button color="primary" [matMenuTriggerFor]="menuDevice">
         Devices
       </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="employee/list">List</button>
-        <button mat-menu-item routerLink="employee/modify">Add</button>
+      <mat-menu #menuDevice="matMenu">
+        <button mat-menu-item routerLink="device/list">List</button>
+        <button mat-menu-item routerLink="device/modify">Add</button>
       </mat-menu>
     </div>
-    <div class="font-l">|</div>
+    <div class="font-l color-border">|</div>
     <div>
-      <button mat-button color="primary" [matMenuTriggerFor]="menu">
-        Link Devices
+      <button mat-button color="primary" [matMenuTriggerFor]="menuInventory">
+        Inventory
       </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="employee/list">List</button>
-        <button mat-menu-item routerLink="employee/modify">Add</button>
+      <mat-menu #menuInventory="matMenu">
+        <button mat-menu-item routerLink="inventory/list">List</button>
+        <button mat-menu-item routerLink="inventory/modify">Add</button>
       </mat-menu>
     </div>
   </div>

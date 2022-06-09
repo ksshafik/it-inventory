@@ -7,6 +7,9 @@ import { EmployeeListComponent } from './employee/employee-list/employee-list.co
 import { EmployeeModifyComponent } from './employee/employee-modify/employee-modify.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { HomeComponent } from './home/home.component';
+import { InventoryListComponent } from './inventory/inventory-list/inventory-list.component';
+import { InventoryModifyComponent } from './inventory/inventory-modify/inventory-modify.component';
+import { InventoryComponent } from './inventory/inventory.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'employee', pathMatch: 'full' },
@@ -42,6 +45,37 @@ const routes: Routes = [
           {
             path: 'modify',
             component: DeviceModifyComponent,
+          },
+        ],
+      },
+
+      {
+        path: 'device',
+        component: DeviceComponent,
+        children: [
+          { path: '', redirectTo: 'list', pathMatch: 'full' },
+          {
+            path: 'list',
+            component: DeviceListComponent,
+          },
+          {
+            path: 'modify',
+            component: DeviceModifyComponent,
+          },
+        ],
+      },
+      {
+        path: 'inventory',
+        component: InventoryComponent,
+        children: [
+          { path: '', redirectTo: 'list', pathMatch: 'full' },
+          {
+            path: 'list',
+            component: InventoryListComponent,
+          },
+          {
+            path: 'modify',
+            component: InventoryModifyComponent,
           },
         ],
       },

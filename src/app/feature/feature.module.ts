@@ -11,6 +11,10 @@ import { DeviceListComponent } from './device/device-list/device-list.component'
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { InventoryComponent } from './inventory/inventory.component';
+import { InventoryListComponent } from './inventory/inventory-list/inventory-list.component';
+import { InventoryModifyComponent } from './inventory/inventory-modify/inventory-modify.component';
+import { CommonService } from '../shared/services/common.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     EmployeeModifyComponent,
     DeviceModifyComponent,
     DeviceListComponent,
+    InventoryComponent,
+    InventoryListComponent,
+    InventoryModifyComponent,
   ],
   imports: [
     FeatureRoutingModule,
@@ -30,5 +37,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers:[CommonService]
 })
 export class FeatureModule {}

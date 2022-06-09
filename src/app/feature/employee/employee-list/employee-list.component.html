@@ -1,6 +1,21 @@
 <div class="title small">List</div>
 
-<div class="example-container mat-elevation-z8" *ngIf="dataSource">
+<div
+  class="example-container mat-elevation-z8"
+  *ngIf="dataSource && dataSource.data.length > 0; else noRecord"
+>
+  <div class="search-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Enter the keyword to search"
+        #input
+      />
+    </mat-form-field>
+  </div>
+
   <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
@@ -31,3 +46,6 @@
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
 </div>
+<ng-template #noRecord>
+  <div class="blank-message">No Record found. Please add new Employee</div>
+</ng-template>

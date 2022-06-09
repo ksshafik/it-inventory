@@ -5,8 +5,8 @@ import * as EmployeeActions from './../actions/employee.actions';
 
 const initialState: Employee = {
   id: 1,
-  name: 'a',
-  email: 'a',
+  name: 'shafik',
+  email: 'ksshafik@gmail.com',
 };
 
 export function employeeReducer(
@@ -17,12 +17,10 @@ export function employeeReducer(
 
   switch (employeeAction.type) {
     case EmployeeActions.ADD_EMPLOYEE:
-      let payload = {...employeeAction.payload};
+      let payload = { ...employeeAction.payload };
       payload.id = state.length + 1;
       return [...state, payload];
     case EmployeeActions.UPDATE_EMPLOYEE:
-      console.log('UPDATE state: ', state);
-      console.log('UPDATE payload: ', employeeAction.payload);
       const employees = state.map((emp) => {
         if (emp.id === employeeAction.payload['id']) {
           return employeeAction.payload;
@@ -30,6 +28,8 @@ export function employeeReducer(
         return emp;
       });
       return [...employees];
+    case EmployeeActions.SEARCH_EMPLOYEE:
+      return [...state, employeeAction.payload];
     default:
       return state;
   }

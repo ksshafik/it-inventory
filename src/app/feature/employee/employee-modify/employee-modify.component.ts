@@ -70,6 +70,6 @@ export class EmployeeModifyComponent implements OnInit {
       this.store.dispatch(new EmployeeActions.AddEmployee(employee));
     }
 
-    this.router.navigate(['/list']);
+    this.router.navigate(['/employee/list']);
   }
 }

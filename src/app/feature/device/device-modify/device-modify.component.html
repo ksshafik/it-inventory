@@ -1,1 +1,55 @@
-<p>device-modify works!</p>
+<div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+  <div class="mb-2">
+    <button
+      mat-icon-button
+      aria-label="Back button"
+      routerLink="/device/list"
+      aria-label="Back"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+
+  <div class="title small">{{ isEdit ? "Edit" : "Add New" }} Device</div>
+</div>
+<form
+  name="form"
+  (ngSubmit)="!deviceForm.invalid && onSubmit(device)"
+  #deviceForm="ngForm"
+>
+  <div
+    fxLayout="column"
+    fxLayoutGap="20px"
+    fxLayoutAlign="start stretch"
+    fxFlex="50"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your type</mat-label>
+      <input
+        matInput
+        name="type"
+        [(ngModel)]="device.type"
+        #type="ngModel"
+        required="true"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your description</mat-label>
+      <input
+        matInput
+        name="description"
+        [(ngModel)]="device.description"
+        #description="ngModel"
+        required="true"
+      />
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary" type="submit" class="mr-3">
+        Save
+      </button>
+      <button mat-raised-button type="button" routerLink="/device/list">
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>

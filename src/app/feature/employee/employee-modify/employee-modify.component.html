@@ -3,7 +3,7 @@
     <button
       mat-icon-button
       aria-label="Back button"
-      [routerLink]="['']"
+      routerLink="/employee/list"
       aria-label="Back"
     >
       <mat-icon>arrow_back</mat-icon>
@@ -12,14 +12,18 @@
 
   <div class="title small">{{ isEdit ? "Edit" : "Add New" }} Employee</div>
 </div>
-<form name="form" (ngSubmit)="!employeeForm.invalid && onSubmit(employee)" #employeeForm="ngForm">
+<form
+  name="form"
+  (ngSubmit)="!employeeForm.invalid && onSubmit(employee)"
+  #employeeForm="ngForm"
+>
   <div
     fxLayout="column"
     fxLayoutGap="20px"
     fxLayoutAlign="start stretch"
     fxFlex="50"
   >
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Enter your name</mat-label>
       <input
         matInput
@@ -29,7 +33,7 @@
         required="true"
       />
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Enter your email</mat-label>
       <input
         matInput
@@ -40,7 +44,16 @@
       />
     </mat-form-field>
     <div>
-      <button mat-raised-button color="primary" type="submit">Save</button>
+      <button mat-raised-button color="primary" type="submit" class="mr-3">
+        Save
+      </button>
+      <button
+        mat-raised-button
+        type="button"
+        routerLink="/employee/list"
+      >
+        Cancel
+      </button>
     </div>
   </div>
 </form>
