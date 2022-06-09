@@ -12,6 +12,7 @@ import { AppState } from './app-state/app-state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { deviceReducer } from './app-state/reducers/device.reducer';
 import { inventoryReducer } from './app-state/reducers/inventory.reducer';
+import { FormsModule } from '@angular/forms';
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production
   ? [storeFreeze]
@@ -24,6 +25,7 @@ export const metaReducers: MetaReducer<AppState>[] = !environment.production
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    FormsModule,
     StoreModule.forRoot(
       {
         employee: employeeReducer,

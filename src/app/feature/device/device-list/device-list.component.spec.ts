@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeviceListComponent } from './device-list.component';
+import { provideMockStore } from '@ngrx/store/testing';
+
 
 describe('DeviceListComponent', () => {
   let component: DeviceListComponent;
@@ -8,7 +10,9 @@ describe('DeviceListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeviceListComponent ]
+      declarations: [ DeviceListComponent ],
+      providers: [provideMockStore({})],
+
     })
     .compileComponents();
   });

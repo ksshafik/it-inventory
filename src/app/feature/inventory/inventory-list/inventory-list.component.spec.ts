@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { InventoryListComponent } from './inventory-list.component';
 
@@ -8,6 +10,8 @@ describe('InventoryListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideMockStore({})],
+      imports: [FormsModule],
       declarations: [ InventoryListComponent ]
     })
     .compileComponents();

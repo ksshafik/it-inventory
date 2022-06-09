@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EmployeeModifyComponent } from './employee-modify.component';
+import { provideMockStore } from '@ngrx/store/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
 
 describe('EmployeeModifyComponent', () => {
   let component: EmployeeModifyComponent;
@@ -8,7 +11,10 @@ describe('EmployeeModifyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EmployeeModifyComponent ]
+      declarations: [ EmployeeModifyComponent ],
+      imports: [RouterTestingModule, FormsModule],
+      providers: [provideMockStore({})],
+
     })
     .compileComponents();
   });
