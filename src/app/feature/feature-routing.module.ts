@@ -9,6 +9,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { HomeComponent } from './home/home.component';
 import { InventoryListComponent } from './inventory/inventory-list/inventory-list.component';
 import { InventoryModifyComponent } from './inventory/inventory-modify/inventory-modify.component';
+import { InventoryViewComponent } from './inventory/inventory-view/inventory-view.component';
 import { InventoryComponent } from './inventory/inventory.component';
 
 const routes: Routes = [
@@ -76,6 +77,10 @@ const routes: Routes = [
           {
             path: 'modify',
             component: InventoryModifyComponent,
+          },
+          {
+            path: 'view',
+            component: InventoryViewComponent,
           },
         ],
       },

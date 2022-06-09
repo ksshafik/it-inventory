@@ -24,7 +24,7 @@
     fxFlex="50"
   >
     <mat-form-field appearance="outline">
-      <mat-label>Enter your type</mat-label>
+      <mat-label>Enter the device type</mat-label>
       <input
         matInput
         name="type"
@@ -32,16 +32,23 @@
         #type="ngModel"
         required="true"
       />
+      <mat-error *ngIf="deviceForm.submitted && type.invalid">
+        This field is required
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Enter your description</mat-label>
+      <mat-label>Enter the device description</mat-label>
       <input
         matInput
         name="description"
         [(ngModel)]="device.description"
         #description="ngModel"
         required="true"
+        maxlength="1000"
       />
+      <mat-error *ngIf="deviceForm.submitted && description.invalid">
+        This field is required
+      </mat-error>
     </mat-form-field>
     <div>
       <button mat-raised-button color="primary" type="submit" class="mr-3">

@@ -1,9 +1,6 @@
 <div class="title small">List</div>
 
-<div
-  class="example-container mat-elevation-z8"
-  *ngIf="dataSource"
->
+<div class="example-container mat-elevation-z8" *ngIf="dataSource">
   <div class="search-container">
     <mat-form-field appearance="outline" class="mr-3">
       <mat-label>Search</mat-label>
@@ -33,13 +30,21 @@
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Employee Name </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.employee.name }}
+        <a
+          [routerLink]="['/inventory/view']"
+          [queryParams]="{ id: element.id }"
+          queryParamsHandling="merge"
+        >
+          {{ element.employee.name }}
+        </a>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="device">
-      <mat-header-cell *matHeaderCellDef> Device Type </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.device.type }} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Linked Device Type </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.device.type }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="description">

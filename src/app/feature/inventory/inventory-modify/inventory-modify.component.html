@@ -27,12 +27,13 @@
     fxFlex="50"
   >
     <mat-form-field appearance="outline">
-      <mat-label>Employee Name</mat-label>
+      <mat-label>Enter Employee Name</mat-label>
       <mat-select
         [(ngModel)]="inventory.employee"
         name="employee"
         #employee="ngModel"
         [compareWith]="compareEmployees"
+        required
       >
         <mat-option *ngFor="let employee of employees" [value]="employee">
           {{ employee.id }} - {{ employee.name }}
@@ -40,17 +41,21 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Device Type</mat-label>
+      <mat-label>Enter Device Type</mat-label>
       <mat-select
         [(ngModel)]="inventory.device"
         name="device"
         #device="ngModel"
         [compareWith]="compareDevices"
+        [required]="'true'"
       >
         <mat-option *ngFor="let device of devices" [value]="device">
           {{ device.id }} - {{ device.type }}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="inventoryForm.submitted && device.invalid">
+        This field is required
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Enter the description</mat-label>
@@ -60,8 +65,13 @@
         [(ngModel)]="inventory.description"
         #description="ngModel"
         required="true"
+        maxlength="1000"
       />
+      <mat-error *ngIf="inventoryForm.submitted && description.invalid">
+        This field is required
+      </mat-error>
     </mat-form-field>
+    <div>Note: Multiple devices can be assigned to an Employee. Single device cannot be assigned to multiple Employees.</div>
     <div>
       <button mat-raised-button color="primary" type="submit" class="mr-3">
         Save

@@ -23,12 +23,17 @@
     font-size: $font-size-base + 1px;
     padding-bottom: 15px;
   }
+
+  &.x-small {
+    font-size: $font-size-base - 1px;
+    font-weight: bold;
+    padding-bottom: 15px;
+  }
 }
 
 .main-label {
-  font-size: $font-size-base + 5px;
-  color: $color-secondary;
-  font-weight: bold;
+  font-size: $font-size-base + 1px;
+  color: $color-text;
   padding-bottom: 30px;
 }
 
@@ -62,4 +67,11 @@
   text-align: center;
   font-size: $font-size-base + 3px;
   color: $color-border;
+}
+ol {
+  margin: 0 !important;
+}
+
+.pointer {
+  cursor: pointer;
 }

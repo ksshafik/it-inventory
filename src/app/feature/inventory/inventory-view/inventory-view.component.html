@@ -1,0 +1,35 @@
+<div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+  <div class="mb-2">
+    <button
+      mat-icon-button
+      aria-label="Back button"
+      routerLink="/inventory/list"
+      aria-label="Back"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+
+  <div class="title small">Inventory - Device Details</div>
+</div>
+<div *ngIf="inventory; else noRecord">
+  <div
+    fxLayout="column"
+    fxLayoutGap="10px"
+    fxLayoutAlign="start stretch"
+    fxFlex="30"
+  >
+    <div class="title x-small">Name</div>
+    <div class="main-label">{{ inventory.employee.name }}</div>
+
+    <div class="title x-small">Linked Devices</div>
+    <ol class="main-label">
+      <li *ngFor="let inventory of deviceEmployees" class="main-label">
+        {{ inventory.device.type }}
+      </li>
+    </ol>
+  </div>
+</div>
+<ng-template #noRecord>
+  <div class="blank-message">No Record found</div>
+</ng-template>

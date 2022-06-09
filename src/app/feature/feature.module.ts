@@ -15,6 +15,7 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { InventoryListComponent } from './inventory/inventory-list/inventory-list.component';
 import { InventoryModifyComponent } from './inventory/inventory-modify/inventory-modify.component';
 import { CommonService } from '../shared/services/common.service';
+import { InventoryViewComponent } from './inventory/inventory-view/inventory-view.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CommonService } from '../shared/services/common.service';
     InventoryComponent,
     InventoryListComponent,
     InventoryModifyComponent,
+    InventoryViewComponent,
   ],
   imports: [
     FeatureRoutingModule,

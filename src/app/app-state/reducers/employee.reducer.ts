@@ -10,7 +10,7 @@ const initialState: Employee = {
 };
 
 export function employeeReducer(
-  state: Employee[] = [initialState],
+  state: Employee[] = [],
   action: Action
 ) {
   const employeeAction = action as EmployeeActions.Actions;

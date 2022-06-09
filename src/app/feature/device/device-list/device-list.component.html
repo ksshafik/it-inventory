@@ -15,12 +15,12 @@
 
   <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="type">
-      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Device Type </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.type }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Device Description </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.description }} </mat-cell>
     </ng-container>
 

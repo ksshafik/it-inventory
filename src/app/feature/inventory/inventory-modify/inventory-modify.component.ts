@@ -117,27 +117,46 @@ export class InventoryModifyComponent implements OnInit {
       this.inventories = inv;
     });
   }
+  /**
+   * @name isFormValid
+   * @description Validate form
+   */
+  isFormValid(): boolean {
+    let retrunValue = true;
+    if (!this.inventory.employee || !this.inventory.employee.name) {
+      this.commonService.openSnackBar('Employee Name is required', 'Close');
+      retrunValue = false;
+    }
+
+    if (!this.inventory.device || !this.inventory.device.description) {
+      this.commonService.openSnackBar('Device Type is required', 'Close');
+      retrunValue = false;
+    }
+    return retrunValue;
+  }
 
   /**
    * @name onSubmit
    * @description On submit form
    */
   onSubmit(inventory: Inventory) {
-    if (this.isEdit) {
-      this.store.dispatch(new InventoryActions.UpdateInventory(inventory));
-      this.router.navigate(['/inventory/list']);
-    } else {
-      let isExist = this.inventories.find(
-        (o) => o.employee.id === inventory.employee.id
-      );
-      if (!isExist) {
-        this.store.dispatch(new InventoryActions.AddInventory(inventory));
+    if (this.isFormValid()) {
+      if (this.isEdit) {
+        this.store.dispatch(new InventoryActions.UpdateInventory(inventory));
         this.router.navigate(['/inventory/list']);
       } else {
-        this.commonService.openSnackBar(
-          'A Device is already linked to this Employee. You can change the device through Edit option',
-          'Close'
+        let isExistDevice = this.inventories.find(
+          (o) => o.device.id === inventory.device.id
         );
+        if (isExistDevice) {
+          this.commonService.openSnackBar(
+            'This Device is already linked to an Employee. You can update the data through Edit option',
+            'Close'
+          );
+        } else {
+          this.store.dispatch(new InventoryActions.AddInventory(inventory));
+          this.router.navigate(['/inventory/list']);
+        }
       }
     }
   }

@@ -24,7 +24,7 @@
     fxFlex="50"
   >
     <mat-form-field appearance="outline">
-      <mat-label>Enter your name</mat-label>
+      <mat-label>Enter your Name</mat-label>
       <input
         matInput
         name="name"
@@ -32,26 +32,30 @@
         #name="ngModel"
         required="true"
       />
+      <mat-error *ngIf="employeeForm.submitted && name.invalid">
+        This field is required
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Enter your email</mat-label>
+      <mat-label>Enter your Email</mat-label>
       <input
         matInput
+        type="email"
         name="email"
         [(ngModel)]="employee.email"
         #email="ngModel"
         required="true"
+        email="true"
       />
+      <mat-error *ngIf="employeeForm.submitted && email.invalid">
+        Email is invalid.
+      </mat-error>
     </mat-form-field>
     <div>
       <button mat-raised-button color="primary" type="submit" class="mr-3">
         Save
       </button>
-      <button
-        mat-raised-button
-        type="button"
-        routerLink="/employee/list"
-      >
+      <button mat-raised-button type="button" routerLink="/employee/list">
         Cancel
       </button>
     </div>

@@ -6,11 +6,11 @@ import * as DeviceActions from './../actions/device.actions';
 const initialState: Device = {
   id: 1,
   type: 'Laptop',
-  description: 'HP Laptop for software development',
+  description: 'HP Elitebook Laptop',
 };
 
 export function deviceReducer(
-  state: Device[] = [initialState],
+  state: Device[] = [],
   action: Action
 ) {
   const deviceAction = action as DeviceActions.Actions;
